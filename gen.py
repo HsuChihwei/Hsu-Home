@@ -58,7 +58,7 @@ def copy_files():
         os.path.join(root, 'assets/style.less'),
         os.path.join(dist, 'assets/style.css')
     )
-    print(cmd)
+    # print(cmd)
     os.system(cmd)
 
     for md in md_list:
