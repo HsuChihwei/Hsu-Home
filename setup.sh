@@ -13,3 +13,4 @@ echo "export PATH=$path"  >> ~/.bashrc
 source ~/.bashrc
 pipenv install
 EOF
+# 安装完后重连终端，激活环境
