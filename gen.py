@@ -5,7 +5,7 @@ import shutil
 import mistune
 from string import Template
 
-md_list = []
+md_list = ['resume.md']
 
 root = os.getcwd()  # 根目录
 dist = os.path.join(root, 'dist')
@@ -64,7 +64,10 @@ def copy_files():
     for md in md_list:
         with open(os.path.join(root, md), 'r') as fr:
             content = fr.read()
-            with open(os.path.join(root, 'dist/{}.html'.format(os.path.splitext(md)[0])), 'w') as fw:
+            tmp = os.path.join(root, 'dist/{}.html'.format(os.path.splitext(md)[0]))
+            if not os.path.exists(os.path.split(tmp)[0]):
+                os.mkdir(os.path.split(tmp)[0])
+            with open(tmp, 'w+') as fw:
                 fw.write(Template(template_html).substitute(
                     {"content": mistune.markdown(content)}
                 ))
